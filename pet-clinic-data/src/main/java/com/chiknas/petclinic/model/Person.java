@@ -3,7 +3,7 @@ package com.chiknas.petclinic.model;
 /**
  * @author nkukn - created on 19-Oct-19 9:39 PM
  */
-public class Person {
+public class Person extends BaseEntity {
     private String firstName;
     private String lastName;
 
