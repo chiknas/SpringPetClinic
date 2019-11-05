@@ -4,8 +4,7 @@ import com.chiknas.petclinic.model.Owner;
 import com.chiknas.petclinic.model.Vet;
 import com.chiknas.petclinic.services.OwnerService;
 import com.chiknas.petclinic.services.VetService;
-import com.chiknas.petclinic.services.map.OwnerMapService;
-import com.chiknas.petclinic.services.map.VetMapService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -18,9 +17,10 @@ public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
 
-    public DataLoader() {
-        this.ownerService = new OwnerMapService();
-        this.vetService = new VetMapService();
+    @Autowired
+    public DataLoader(OwnerService ownerService, VetService vetService) {
+        this.ownerService = ownerService;
+        this.vetService = vetService;
     }
 
     @Override

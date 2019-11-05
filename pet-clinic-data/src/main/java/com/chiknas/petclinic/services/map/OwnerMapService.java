@@ -2,12 +2,14 @@ package com.chiknas.petclinic.services.map;
 
 import com.chiknas.petclinic.model.Owner;
 import com.chiknas.petclinic.services.OwnerService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 /**
  * @author nkukn - created on 29-Oct-19 9:44 PM
  */
+@Service
 public class OwnerMapService extends AbstractMapService<Owner, Long> implements OwnerService {
     @Override
     public Set<Owner> findAll() {

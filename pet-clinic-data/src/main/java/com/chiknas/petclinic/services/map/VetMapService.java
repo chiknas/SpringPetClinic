@@ -2,12 +2,14 @@ package com.chiknas.petclinic.services.map;
 
 import com.chiknas.petclinic.model.Vet;
 import com.chiknas.petclinic.services.VetService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 /**
  * @author nkukn - created on 29-Oct-19 9:53 PM
  */
+@Service
 public class VetMapService extends AbstractMapService<Vet, Long> implements VetService {
     @Override
     public Set<Vet> findAll() {
