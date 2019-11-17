@@ -1,8 +1,10 @@
 package com.chiknas.petclinic.bootstrap;
 
 import com.chiknas.petclinic.model.Owner;
+import com.chiknas.petclinic.model.PetType;
 import com.chiknas.petclinic.model.Vet;
 import com.chiknas.petclinic.services.OwnerService;
+import com.chiknas.petclinic.services.PetTypeService;
 import com.chiknas.petclinic.services.VetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -16,15 +18,26 @@ public class DataLoader implements CommandLineRunner {
 
     private final OwnerService ownerService;
     private final VetService vetService;
+    private final PetTypeService petTypeService;
 
     @Autowired
-    public DataLoader(OwnerService ownerService, VetService vetService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
+        this.petTypeService = petTypeService;
     }
 
     @Override
     public void run(String... args) throws Exception {
+
+        PetType dog = new PetType();
+        dog.setName("Dog");
+        petTypeService.save(dog);
+
+        PetType cat = new PetType();
+        cat.setName("Cat");
+        petTypeService.save(cat);
+
         Owner owner1 = new Owner();
         owner1.setFirstName("Nikos");
         owner1.setLastName("Kyknas");
