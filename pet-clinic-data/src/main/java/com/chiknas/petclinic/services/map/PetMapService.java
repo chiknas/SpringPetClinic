@@ -1,7 +1,7 @@
 package com.chiknas.petclinic.services.map;
 
 import com.chiknas.petclinic.model.Pet;
-import com.chiknas.petclinic.services.CrudService;
+import com.chiknas.petclinic.services.PetService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
@@ -10,7 +10,7 @@ import java.util.Set;
  * @author nkukn - created on 29-Oct-19 9:50 PM
  */
 @Service
-public class PetMapService extends AbstractMapService<Pet, Long> implements CrudService<Pet, Long> {
+public class PetMapService extends AbstractMapService<Pet, Long> implements PetService {
     @Override
     public Set<Pet> findAll() {
         return super.findAll();
