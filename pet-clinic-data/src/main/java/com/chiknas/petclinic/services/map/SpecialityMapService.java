@@ -2,12 +2,14 @@ package com.chiknas.petclinic.services.map;
 
 import com.chiknas.petclinic.model.Speciality;
 import com.chiknas.petclinic.services.SpecialityService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 /**
  * @author nkukn - created on 17/11/2019 10:04 μ.μ.
  */
+@Service
 public class SpecialityMapService extends AbstractMapService<Speciality, Long> implements SpecialityService {
     @Override
     public Set<Speciality> findAll() {
