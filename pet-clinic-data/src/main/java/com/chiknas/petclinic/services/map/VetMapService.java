@@ -5,6 +5,7 @@ import com.chiknas.petclinic.model.Vet;
 import com.chiknas.petclinic.services.SpecialityService;
 import com.chiknas.petclinic.services.VetService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
@@ -13,6 +14,7 @@ import java.util.Set;
  * @author nkukn - created on 29-Oct-19 9:53 PM
  */
 @Service
+@Profile({"default", "map"})
 public class VetMapService extends AbstractMapService<Vet, Long> implements VetService {
 
     private final SpecialityService specialityService;
