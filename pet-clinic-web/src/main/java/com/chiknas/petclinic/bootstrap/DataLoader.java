@@ -1,10 +1,7 @@
 package com.chiknas.petclinic.bootstrap;
 
 import com.chiknas.petclinic.model.*;
-import com.chiknas.petclinic.services.OwnerService;
-import com.chiknas.petclinic.services.PetTypeService;
-import com.chiknas.petclinic.services.SpecialityService;
-import com.chiknas.petclinic.services.VetService;
+import com.chiknas.petclinic.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -21,18 +18,20 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialityService specialityService;
+    private final VisitService visitService;
 
     @Autowired
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialityService specialityService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialityService specialityService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialityService = specialityService;
+        this.visitService = visitService;
     }
 
     @Override
     public void run(String... args) throws Exception {
-        if(petTypeService.findAll().size() == 0){
+        if (petTypeService.findAll().size() == 0) {
             loadData();
         }
     }
@@ -91,6 +90,13 @@ public class DataLoader implements CommandLineRunner {
         owner2.getPets().add(giwrgosPet);
 
         ownerService.save(owner2);
+
+        Visit catVisit = new Visit();
+        catVisit.setPet(giwrgosPet);
+        catVisit.setDescription("poops a lot...");
+        catVisit.setDate(LocalDate.now());
+
+        visitService.save(catVisit);
 
         Vet vet1 = new Vet();
         vet1.setFirstName("NikosVet");
